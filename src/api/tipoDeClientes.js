@@ -5,7 +5,7 @@ const { auditoria } = require('./auditoria');
 function getTipoClientes(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   
@@ -27,7 +27,7 @@ function getTipoClientes(req, res) {
   function crudTipoClientes(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   

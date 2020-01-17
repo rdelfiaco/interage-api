@@ -6,7 +6,7 @@ const {
 function getPerguntas(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -28,7 +28,7 @@ function getPerguntas(req, res) {
 function getPerguntaById(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -46,7 +46,7 @@ function getPerguntaById(req, res) {
 function getAlternativasByIdPerguntas(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -65,7 +65,7 @@ function getAlternativasByIdPerguntas(req, res) {
 function addPergunta(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -102,7 +102,7 @@ function addPergunta(req, res) {
 function updateStatusPergunta(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     req.query.p = JSON.parse(req.query.data);
@@ -122,7 +122,7 @@ function updateStatusPergunta(req, res) {
 function updateMultiEscolhaPergunta(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     req.query.p = JSON.parse(req.query.data);
@@ -142,7 +142,7 @@ function updateMultiEscolhaPergunta(req, res) {
 function updatePergunta(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -167,7 +167,7 @@ function updatePergunta(req, res) {
 function deletePergunta(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `DELETE FROM quest_perguntas

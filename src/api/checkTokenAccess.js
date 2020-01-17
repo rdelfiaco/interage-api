@@ -1,7 +1,7 @@
 exports.checkTokenAccess = function checkTokenAccess(req) {
   return new Promise(function (resolve, reject) {
     if (!req.query.id_usuario) reject('!id_usuario')
-    if (!req.query.token) reject('!token_usuario')
+    if (!req.headers.token) reject('!token_usuario')
 
     const dbconnection = require('../config/dbConnection')
     const { Client } = require('pg')
@@ -11,7 +11,7 @@ exports.checkTokenAccess = function checkTokenAccess(req) {
     client.connect()
 
     let sql = `SELECT id_usuario, token_access from historico_login
-                where token_access='${req.query.token}' AND ativo=true`
+                where token_access='${req.headers.token}' AND ativo=true`
 
     client.query(sql)
       .then(res => {

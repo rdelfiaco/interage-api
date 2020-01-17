@@ -5,7 +5,7 @@ const {
 function getAlternativas(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -24,7 +24,7 @@ function getAlternativas(req, res) {
 function addAlternativa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -57,7 +57,7 @@ function addAlternativa(req, res) {
 function getAlternativaById(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -75,7 +75,7 @@ function getAlternativaById(req, res) {
 function updateStatusAlternativa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     req.query.a = JSON.parse(req.query.data);
@@ -95,7 +95,7 @@ function updateStatusAlternativa(req, res) {
 function updateAlternativa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -120,7 +120,7 @@ function updateAlternativa(req, res) {
 function deleteAlternativa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `DELETE FROM quest_alternativas

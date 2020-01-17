@@ -10,7 +10,7 @@ const { auditoria } = require('./auditoria');
 function getPessoaPorCPFCNPJ(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     req.query.cpf_cnpj = req.query.cpf_cnpj.replace(/\W/gi, '');
@@ -27,7 +27,7 @@ function getPessoaPorCPFCNPJ(req, res) {
 function getTipoRelacionamentos(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `select * from  view_tipo_relacionamentos`
@@ -43,7 +43,7 @@ function getTipoRelacionamentos(req, res){
 function crudRelacionamento(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -104,7 +104,7 @@ function crudRelacionamento(req, res){
 function getPessoa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -165,7 +165,7 @@ function getPessoa(req, res) {
 function getEnderecos(req) {
   return new Promise((resolve, reject) => {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sqlEnderecos = `SELECT 
@@ -195,7 +195,7 @@ function getEnderecos(req) {
 function getTelefones(req) {
   return new Promise((resolve, reject) => {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sqlTelefones = `SELECT * FROM pessoas_telefones
@@ -212,7 +212,7 @@ executaSQL(credenciais, sqlTelefones).then(res => {
 function getRelacionamentos(req) {
   return new Promise((resolve, reject) => {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `select * 
@@ -230,7 +230,7 @@ executaSQL(credenciais, sql).then(res => {
 function getLeadsMiling(req) {
   return new Promise((resolve, reject) => {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `select p.id as ip_pessoa, lm.*, plm.dtinclusao   
@@ -249,7 +249,7 @@ executaSQL(credenciais, sql).then(res => {
 function getAuditoria(req) {
   return new Promise((resolve, reject) => {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `select data_hora, p.nome as usuario, campo, 
@@ -282,7 +282,7 @@ function salvarPessoa(req, res) {
 
       client.connect()
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
 
@@ -377,7 +377,7 @@ function salvarPessoa(req, res) {
 async function  adicionarPessoa(req, res) {
 
   let credenciais = {
-    token: req.query.token,
+    token: req.headers.token,
     idUsuario: req.query.id_usuario
   };
   var possui_carteira_cli = await buscaValorDoAtributo(credenciais, 'possui_carteira_cli', 'usuarios', `id = ${req.query.id_usuario}` );
@@ -391,7 +391,7 @@ async function  adicionarPessoa(req, res) {
       const client = new Client(dbconnection)
       
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
       // divide o objeto em atuais e anteriores 
@@ -587,7 +587,7 @@ function salvarTelefonePessoa(req, res) {
       const client = new Client(dbconnection)
 
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
 
@@ -666,7 +666,7 @@ function salvarTelefonePessoa(req, res) {
 
 async function editaTelefonePrincipal(req, res) {
   let credenciais = {
-    token: req.query.token,
+    token: req.headers.token,
     idUsuario: req.query.id_usuario
   };
       // busca o telefone que era principal e o que será 
@@ -818,7 +818,7 @@ function editaEnderecoDeCorrespondencia(req, res) {
 async function excluirTelefonePessoa(req, res) {
 
   let credenciais = {
-    token: req.query.token,
+    token: req.headers.token,
     idUsuario: req.query.id_usuario
   };
       // busca o telefone que era ecluido 
@@ -894,7 +894,7 @@ function salvarEnderecoPessoa(req, res) {
 
       client.connect()
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };      
       let operacao ='I';
@@ -1057,7 +1057,7 @@ function excluirEnderecoPessoa(req, res) {
 
 async function pesquisaPessoas(req, res) {
   let credenciais = {
-    token: req.query.token,
+    token: req.headers.token,
     idUsuario: req.query.id_usuario
   };
   var possui_carteira_cli = await buscaValorDoAtributo(credenciais, 'possui_carteira_cli', 'usuarios', `id = ${req.query.id_usuario}` )
@@ -1168,7 +1168,7 @@ function getTratamentoPessoaFisica(req, res) {
 function getQuestariosPessoaId(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -1189,7 +1189,7 @@ function getQuestariosPessoaId(req, res) {
 function getQuestRespAnaliticaPessoaId(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -1209,7 +1209,7 @@ function getQuestRespAnaliticaPessoaId(req, res) {
 function getPessoaDadosPrincipais(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 

@@ -75,7 +75,7 @@ function getCampanhas(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `select c.*, ca.nome as canal, q.nome as questionario, m.nome as motivo
@@ -370,7 +370,7 @@ function getTotalLigacoesCampanha(req, res) {
 function getCampanhasTelemarketingAtivas(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.idUsuarioLogado
     };
 
@@ -491,7 +491,7 @@ function getCampanhaTelemarketingAnalisar(req, res) {
 function getClientesConcluidos(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.idUsuarioLogado
     };
 
@@ -527,7 +527,7 @@ function getClientesConcluidos(req, res) {
 function getLigacoesRealizadas(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.idUsuarioLogado
     };
 
@@ -557,7 +557,7 @@ function getLigacoesRealizadas(req, res) {
 function getClientesPendentes(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.idUsuarioLogado
     };
 
@@ -588,7 +588,7 @@ function getClientesPendentes(req, res) {
 function getCampanhaFollowDoUsuario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `Select  id_campanha, campanha,  count(*) as qtde
@@ -656,7 +656,7 @@ function getDetalheCampanha(req, res) {
 function getDetalheCampanhaStatus(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -682,7 +682,7 @@ function getDetalheCampanhaStatus(req, res) {
 function getQuestRespSintetica(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -703,7 +703,7 @@ function getQuestRespSintetica(req, res) {
 function getQuestRespAnalitica(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -724,7 +724,7 @@ function getQuestRespAnalitica(req, res) {
 function getDetalheCampanhaConsultor(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -750,7 +750,7 @@ function getDetalheCampanhaConsultor(req, res) {
 function getDetalheCampanhaConsultorStatus(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -776,7 +776,7 @@ function getDetalheCampanhaConsultorStatus(req, res) {
 function getDetalheCampanhaStatusConsultor(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -803,7 +803,7 @@ function getDetalheCampanhaStatusConsultor(req, res) {
 function getCampanhasUsuarioSeleconado(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -833,7 +833,7 @@ function getCampanhasUsuarioSeleconado(req, res) {
 function salvarCampanhasDoUsuario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -883,7 +883,7 @@ function salvarCampanhasDoUsuario(req, res) {
 function salvarUsuariosDaCampanha(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -934,7 +934,7 @@ function salvarUsuariosDaCampanha(req, res) {
 function getUsuariosCampanhaSelecionada(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let campanhaSelecionada = JSON.parse(req.query.campanhaSelecionada);
@@ -961,7 +961,7 @@ function getUsuariosCampanhaSelecionada(req, res) {
 function crudCampanha(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
    const dataPadrão = '01/01/1900'

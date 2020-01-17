@@ -10,7 +10,7 @@ const { getUsuarios } = require('./usuario')
 function getMotivos(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
                                               
@@ -30,7 +30,7 @@ function getMotivos(req, res){
 function crudMotivos(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -83,7 +83,7 @@ function crudMotivos(req, res){
 function getCanaisMotivoSeleconado(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
       
@@ -110,7 +110,7 @@ function getCanaisMotivoSeleconado(req, res){
 
 async function salvarCanaisDoMotivo(req, res){
   let credenciais = {
-    token: req.query.token,
+    token: req.headers.token,
     idUsuario: req.query.id_usuario
   };
 
@@ -179,7 +179,7 @@ async function salvarCanaisDoMotivo(req, res){
 function getRespostasMotivoSeleconado(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     
@@ -213,7 +213,7 @@ function getRespostasMotivoSeleconado(req, res){
 function getMotivosRespostasAutomaticas(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
       
@@ -296,7 +296,7 @@ function getMotivosRespostasAutomaticas(req, res){
 function crudRespostasMotivo(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -364,7 +364,7 @@ function crudRespostasMotivo(req, res){
 function crudMotivosRespostasAutomaticas(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -433,7 +433,7 @@ function crudMotivosRespostasAutomaticas(req, res){
 function getCanaisMotivos(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
       

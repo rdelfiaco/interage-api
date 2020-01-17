@@ -5,7 +5,7 @@ function salvarProposta(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -116,7 +116,7 @@ function salvarProposta(req, res) {
 function getPropostasDoUsuario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.idUsuarioLogado
     };
     let sql = `select * from view_proposta where id_usuario = ${req.query.idUsuarioSelect} 
@@ -140,7 +140,7 @@ function getPropostasDoUsuario(req, res) {
 function getPropostaPorId(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -162,7 +162,7 @@ function getPropostaPorId(req, res) {
 function getPropostasPorPeriodoSintetico(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -221,7 +221,7 @@ function getPropostaFiltros(req, res){
 function getStatusProposta(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `select * from status_proposta where status order by nome`
@@ -243,7 +243,7 @@ function salvarDadosVeiculoDaProposta(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     

@@ -5,7 +5,7 @@ const { getPermissoes } = require('./permissao');
 const { adicionarPessoa } = require( './pessoa');
 
 function login(req, res) {
-
+  // console.log(req.headers.token);
   return new Promise(function (resolve, reject) {
     const dbconnection = require('../config/dbConnection')
     const { Client } = require('pg')
@@ -13,19 +13,19 @@ function login(req, res) {
     const client = new Client(dbconnection)
 
     client.connect()
-
-    const senhaCriptografada = req.query.senha
+    var query = req.body;
+    const senhaCriptografada = query.senha
     let sql = `SELECT u.*, pe.apelido_fantasia as apelido, ddd, telefone, '' as  permissoes  
                 from usuarios u
                 inner join pessoas pe on u.id_pessoa = pe.id
                 left join pessoas_telefones tel on pe.id = tel.id_pessoa and principal 
-                where login = '${req.query.login}' `
+                where login = '${query.login}' `;
+
     client.query(sql)
       .then(res => {
         if (res.rowCount > 0) {
           let token_access = generateTokenUserAcess()
           let usuario = res.rows[0];
-
           if(usuario.senha == senhaCriptografada) {
 
             client.query(`insert into historico_login(id_usuario, ip, datahora, token_access, ativo)
@@ -35,6 +35,7 @@ function login(req, res) {
                 delete usuario.senha;
                 delete usuario.login;
                 usuario.token = token_access;
+                usuario.date_expire = new Date().getTime() + (60 * 60 * 6000);
 
                 sql = `select id_recursos::integer, rota
                 from permissoes_organograma po 
@@ -95,7 +96,7 @@ function logout(req, res) {
     if (req.query.id_usuario) {
 
     let sql = `UPDATE historico_login SET ativo=false
-                    WHERE token_access = '${req.query.token}' OR id_usuario = ${req.query.id_usuario}`
+                    WHERE token_access = '${req.headers.token}' OR id_usuario = ${req.query.id_usuario}`
 
     client.query(sql)
       .then(res => {
@@ -223,7 +224,7 @@ function getUsuarios(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -249,7 +250,7 @@ function salvarUsuario(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -280,7 +281,7 @@ function excluirUsuario(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -301,7 +302,7 @@ function adicionarUsuario(req, res){
   return new Promise(function (resolve, reject) {
     let id_pessoa = req.query.id_pessoa;
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     if (id_pessoa == ''){
@@ -413,7 +414,7 @@ function adicionarUsuario(req, res){
 function getPermissoesUsuarioSeleconado(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
        
@@ -441,7 +442,7 @@ function getPermissoesUsuarioSeleconado(req, res){
 function salvarPermissoesDoUsuario(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -482,7 +483,7 @@ function salvarPermissoesDoUsuario(req, res){
   function getLogin(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
       let sql = `select * from usuarios where login = '${req.query.login}'`
@@ -501,7 +502,7 @@ function salvarPermissoesDoUsuario(req, res){
   function getcarteiraUsuarioSeleconado(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
 

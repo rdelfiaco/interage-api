@@ -288,7 +288,7 @@ function salvarEvento(req, res) {
             if (motivoAcaoSQL){
               let sql = motivoAcaoSQL.replace('${req.query.id_evento}', `${req.query.id_evento}`)
               let credenciais = {
-                token: req.query.token,
+                token: req.headers.token,
                 idUsuario: req.query.id_usuario
               };
               //console.log(credenciais, sql )
@@ -419,7 +419,7 @@ function salvarEvento(req, res) {
                     //console.log(13,motivoRespostaAcaoSQL)
                     let sql = motivoRespostaAcaoSQL.replace('${req.query.id_evento}', `${req.query.id_evento}`)
                     let credenciais = {
-                      token: req.query.token,
+                      token: req.headers.token,
                       idUsuario: req.query.id_usuario
                     };
                     //console.log(credenciais, sql )
@@ -567,7 +567,7 @@ function getEventosPendentes(req, res) {
 function getEventosLinhaDoTempo(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -847,7 +847,7 @@ function getEventosFiltrados(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -896,7 +896,7 @@ function getCountEventosPendentes(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -1062,7 +1062,7 @@ function getMotivosCanais(client) {
 function getEventosPorPeriodoSintetico(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 

@@ -6,7 +6,7 @@ const { getUsuarios } = require('./usuario')
 function getTarefaPorId(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   
@@ -53,7 +53,7 @@ function getTarefaPorId(req, res) {
 
         checkTokenAccess(req).then(historico => {
             let credenciais = {
-                token: req.query.token,
+                token: req.headers.token,
                 idUsuario: req.query.id_usuario
               };
 
@@ -87,7 +87,7 @@ function getTarefasPendentes(req, res){
 
         checkTokenAccess(req).then(historico => {
             let credenciais = {
-                token: req.query.token,
+                token: req.headers.token,
                 idUsuario: req.query.id_usuario
               };
 

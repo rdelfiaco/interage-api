@@ -4,7 +4,7 @@ const { executaSQL } = require('./executaSQL')
 function getSQLs(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.idUsuarioLogado
       };
       
@@ -27,7 +27,7 @@ function getSQLs(req, res) {
   function getResultadoSQLs(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.idUsuarioLogado
       };
       
@@ -57,7 +57,7 @@ function getSQLs(req, res) {
   function getSQL(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.idUsuarioLogado
       };
 

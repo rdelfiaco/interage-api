@@ -5,7 +5,7 @@ const { auditoria } = require('./auditoria');
 function getObjecao(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   
@@ -27,7 +27,7 @@ function getObjecao(req, res) {
   function crudObjecao(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   

@@ -5,7 +5,7 @@ const { auditoria } = require('./auditoria');
 function getPausas(req, res) {
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   
@@ -27,7 +27,7 @@ function getPausas(req, res) {
   function crudPausa(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   
@@ -84,7 +84,7 @@ function getPausas(req, res) {
 function registrarInicioPausa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -110,7 +110,7 @@ function registrarInicioPausa(req, res) {
 function registrarFimPausa(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 

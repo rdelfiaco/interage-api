@@ -4,7 +4,7 @@ const { executaSQL } = require('./executaSQL');
 function getCanais(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
                                               
@@ -23,7 +23,7 @@ function getCanais(req, res){
 function crudCanais(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 

@@ -26,7 +26,7 @@ function getRanks(req, res){
   function getProspeccao(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
       let sql = `select mr.nome as resposta_motivo, u.login as consultor , u.color_r, u.color_g, u.color_b, count(e.*) as total
@@ -57,7 +57,7 @@ function getRanks(req, res){
   function getPropostasEmitidas(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
       let sql = `select  sp.nome as status_proposta , u.login as consultor,  u.color_r, u.color_g, u.color_b, coalesce( tot.total, 0)   as total
@@ -86,7 +86,7 @@ function getRanks(req, res){
   function getProspeccaoSolicitouProposta(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
       let sql = `select  mr.nome as resposta_motivo, u.login as consultor , count(e.*) as total

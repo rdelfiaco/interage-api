@@ -8,7 +8,7 @@ function getDepartamentos(req, res) {
     return new Promise(function (resolve, reject) {
   
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
       let sql = `
@@ -31,7 +31,7 @@ function getDepartamentosUsuarios(req, res) {
   return new Promise(function (resolve, reject) {
 
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -51,7 +51,7 @@ function getDepartamentosUsuarios(req, res) {
 function getPermissoesDepartamentoSeleconado(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
        
@@ -80,7 +80,7 @@ function getPermissoesDepartamentoSeleconado(req, res){
 function salvarPermissoesDoDepartamento(req, res){
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -121,7 +121,7 @@ function salvarPermissoesDoDepartamento(req, res){
   function salvarUsuariosDoDepartamento(req, res){
     return new Promise(function (resolve, reject) {
       let credenciais = {
-        token: req.query.token,
+        token: req.headers.token,
         idUsuario: req.query.id_usuario
       };
   

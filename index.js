@@ -4,6 +4,10 @@ const app = express();
 const nodeStart = require('./src/config/nodeStart');
 const bodyParser = require('body-parser');
 
+var cors = require('cors')
+
+app.use(cors()) // Use this after the variable declaration
+
 const usuario = require('./src/api/usuario');
 const campanha = require('./src/api/campanha');
 const evento = require('./src/api/evento');
@@ -108,7 +112,7 @@ declaraServico('salvarPermissoesDoDepartamento', departamentos.salvarPermissoesD
 declaraServico('salvarUsuariosDoDepartamento', departamentos.salvarUsuariosDoDepartamento);
 
 // usuários
-declaraServico('login', usuario.login);
+declaraServicoPost('login', usuario.login);
 declaraServico('getLogin', usuario.getLogin);
 declaraServico('getUsuarios', usuario.getUsuarios);
 declaraServico('salvarUsuario', usuario.salvarUsuario);

@@ -6,7 +6,7 @@ const {
 function getQuestionarios(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -28,7 +28,7 @@ function getQuestionarios(req, res) {
 function getQuestionarioById(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     let sql = `SELECT * FROM questionarios where questionarios.id=${req.query.id}`
@@ -55,7 +55,7 @@ function getQuestionarioById(req, res) {
 function getPerguntasByIdUqestionario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -74,7 +74,7 @@ function getPerguntasByIdUqestionario(req, res) {
 function addQuestionario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -94,7 +94,7 @@ function addQuestionario(req, res) {
 function updateStatusQuestionario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     req.query.q = JSON.parse(req.query.data);
@@ -114,7 +114,7 @@ function updateStatusQuestionario(req, res) {
 function updateQuestionario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -133,7 +133,7 @@ function updateQuestionario(req, res) {
 function deleteQuestionario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -153,7 +153,7 @@ function deleteQuestionario(req, res) {
 function getQuestionarioCompletoById(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
 
@@ -173,7 +173,7 @@ function getQuestionarioCompletoById(req, res) {
 function gravaRespostaQuestionario(req, res) {
   return new Promise(function (resolve, reject) {
     let credenciais = {
-      token: req.query.token,
+      token: req.headers.token,
       idUsuario: req.query.id_usuario
     };
     console.log(req.query.data);
