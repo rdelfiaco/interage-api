@@ -24,13 +24,13 @@
 //     password: 'postgres'
 // });
 
-// module.exports = ({ //localhost
-//     host: 'localhost',
-//     port: 5432,
-//     database: 'altis',
-//     user: 'postgres',
-//     password: 'postgres'
-// });
+module.exports = ({ //localhost
+    host: 'localhost',
+    port: 5432,
+    database: 'altis',
+    user: 'postgres',
+    password: 'postgres'
+});
 
 // module.exports = ({ //treinamento
 //     host: '88.99.35.190',
@@ -40,10 +40,10 @@
 //     password: 'altisinterage123!@#'
 // });
 
-module.exports = ({ //mac_producao 
-    host: '88.99.35.190',
-    port: 5432,
-    database: 'altis',
-    user: 'postgres',
-    password: 'altisinterage123!@#'
-});
+// module.exports = ({ //mac_producao 
+//     host: '88.99.35.190',
+//     port: 5432,
+//     database: 'altis',
+//     user: 'postgres',
+//     password: 'altisinterage123!@#'
+// });
